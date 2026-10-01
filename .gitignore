@@ -1,0 +1,20 @@
+# Database & Environment Secrets
+config/db.php.local
+.env
+.env.*
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
+
+# Editor & IDE Directories
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs & Temporary Files
+*.log
+logs/
+temp/
+tmp/
