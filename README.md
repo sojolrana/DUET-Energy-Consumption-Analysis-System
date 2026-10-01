@@ -5,19 +5,20 @@
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.x-7952B3?logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-An IoT-driven, web-based Energy Management System (EMS) designed for university campuses and multi-building facilities. The system continuously ingests meter telemetry, detects consumption anomalies, visualizes campus load in real time, and produces comprehensive energy audit reports.
+A web-based Energy Management System (EMS) designed to monitor, analyze, and visualize electrical power consumption across university facilities. Developed with PHP, MySQL, and Bootstrap, this application models a modern campus utility platform featuring real-time data visualization, built-in load simulation, automated anomaly alerts, and printable audit reports.
 
 ---
 
 ## Key Features
 
-- **Live Campus Telemetry Dashboard**: Visualizes real-time power draw (kW), aggregate energy consumption (kWh), power factor, and operational alerts across faculties and halls.
-- **IoT Data Ingestion Engine**: Lightweight RESTful ingest endpoint (`/api/ingest.php`) designed for edge microcontrollers (ESP32, Raspberry Pi, Arduino) and digital smart meters.
-- **Hardware & Facility Hierarchy**: Complete administrative CRUD interfaces for campus infrastructure, mapping physical meters to specific buildings and departments.
-- **Anomaly Detection & Threshold Alerts**: Automated alert generation for over-current, voltage sags/swells, and abnormal off-peak energy usage.
-- **Auditing & Reporting Engine**: Dynamic consumption comparisons with printable, executive-ready energy audit reports (`print_report.php`).
-- **Telemetry Simulation Suite**: Built-in testbed (`simulate.php`) to generate realistic campus energy load cycles without physical hardware attached.
-- **Role-Based Access Control (RBAC)**: Secure multi-tier authentication restricting administration, meter configuration, and audit access.
+- **Interactive Analytics Dashboard**: Live monitoring interface with Chart.js displaying real-time power draw (kW), aggregate consumption (kWh), power factor metrics, and facility loads.
+- **Facility & Meter Management**: Full CRUD modules to manage campus infrastructure, map virtual or physical meters to specific buildings, and organize departmental hierarchies.
+- **Built-in Telemetry Simulator**: Native load generator (`simulate.php`) to test dynamic daytime/nighttime consumption patterns and test application response under fluctuating loads.
+- **REST Data Ingestion API**: Structured JSON endpoint (`/api/ingest.php`) capable of receiving automated or simulated meter readings programmatically.
+- **Threshold Alerts & Anomaly Tracking**: Automatic rule-based detection for electrical spikes, abnormal off-peak loads, and over-consumption events.
+- **Reporting & Print-Ready Audits**: Consumption breakdown filters by date and building, complete with a dedicated print layout (`print_report.php`) for administrative audits.
+- **Internal Maintenance Messaging**: Operator hub to dispatch maintenance alerts, flag meter faults, and log operational notes.
+- **Role-Based Access Control (RBAC)**: Secure multi-tier session authentication separating administrator privileges from viewing roles.
 
 ---
 
@@ -26,28 +27,28 @@ An IoT-driven, web-based Energy Management System (EMS) designed for university 
 ```text
 duet_ems/
 ├── api/
-│   ├── ingest.php          # REST endpoint for incoming meter telemetry
-│   └── live_stats.php      # Polling endpoint for real-time dashboard visualizers
+│   ├── ingest.php          # REST endpoint for JSON reading payloads
+│   └── live_stats.php      # Polling endpoint for real-time dashboard updates
 ├── config/
-│   └── db.php              # Database credentials & PDO connection setup
+│   └── db.php              # Database connection configuration (PDO)
 ├── includes/
 │   ├── auth.php            # Session guards & access-level validation
 │   ├── header.php          # Reusable navigation & global asset links
 │   └── footer.php          # Global script bundles & document terminators
-├── alerts.php              # Real-time anomaly logs and resolution tracking
-├── buildings.php           # Campus building & faculty management
-├── dashboard.php           # Primary executive overview & analytics widgets
-├── index.php               # Gateway & route redirector
+├── alerts.php              # Anomaly detection logs and resolution status
+├── buildings.php           # Campus building & faculty management (CRUD)
+├── dashboard.php           # Primary executive overview & dynamic chart widgets
+├── index.php               # Gateway router and login redirector
 ├── login.php               # User authentication portal
-├── logout.php              # Session invalidation & termination
-├── messages.php            # Internal campus engineer communication hub
-├── meters.php              # Smart meter inventory & assignment
-├── print_report.php        # Print-optimized audit report generator
-├── readings.php            # Granular time-series telemetry table
-├── reports.php             # Consumption analytics & date-filtered reports
-├── schema.sql              # Relational schema definition & default seed data
-├── simulate.php            # Synthetic telemetry generator for testing
-└── users.php               # System user management & credential controls
+├── logout.php              # Session termination handler
+├── messages.php            # Internal campus engineer message center
+├── meters.php              # Meter inventory, status, and building assignment
+├── print_report.php        # Dedicated print-optimized audit report view
+├── readings.php            # Time-series consumption logs & filtering
+├── reports.php             # Consumption analytics & date-range aggregations
+├── schema.sql              # Relational database schema & initial seed data
+├── simulate.php            # Automated synthetic consumption generator
+└── users.php               # Administrative user management & credentials
 ```
 
 ---
